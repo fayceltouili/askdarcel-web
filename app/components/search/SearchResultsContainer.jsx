@@ -47,7 +47,7 @@ function useWindowDimensions() {
 const SearchResultsContainer = ({ searchState, searchResults, searching }) => {
   const [getMapButton, setMapButton] = useState(false);
   const { width } = useWindowDimensions();
-  const isMobile = (width <= 767) ? true : false;
+  const isMobile = (width <= 767);
   let output = null;
   if (!searchResults && searching) {
     output = <Loader />;
@@ -70,26 +70,26 @@ No results have been found for
             {searchResults.query.length > 0
                 && <h1>{searchResults.query}</h1>
             }
-            <Filtering 
-              setMapButton={setMapButton} 
-              getMapButton={getMapButton} 
+            <Filtering
+              setMapButton={setMapButton}
+              getMapButton={getMapButton}
               isMobile={isMobile}
             />
           </div>
           { (getMapButton && isMobile) ? (
-              <SearchMap
-                hits={hits}
-                page={searchResults.page}
-                hitsPerPage={searchResults.hitsPerPage}
-                isMobile={true}
-              />
-            ) : (
-              <SearchTable
-                hits={hits}
-                page={searchResults.page}
-                hitsPerPage={searchResults.hitsPerPage}
-              />
-            )
+            <SearchMap
+              hits={hits}
+              page={searchResults.page}
+              hitsPerPage={searchResults.hitsPerPage}
+              isMobile
+            />
+          ) : (
+            <SearchTable
+              hits={hits}
+              page={searchResults.page}
+              hitsPerPage={searchResults.hitsPerPage}
+            />
+          )
           }
           <div className="add-resource">
               Can&apos;t find the organization you&apos;re looking for?

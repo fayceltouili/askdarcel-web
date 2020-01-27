@@ -78,7 +78,7 @@ function CustomMarker({
 }
 
 const SearchMap = ({
-  hits, userLocation, page, hitsPerPage, isMobile
+  hits, userLocation, page, hitsPerPage, isMobile,
 }) => {
   if (!hits || !hits.length) {
     return null;
