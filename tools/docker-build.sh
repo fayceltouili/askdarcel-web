@@ -1,3 +1,4 @@
+#!/bin/bash
 COMMIT=${TRAVIS_COMMIT::8}
 SANITIZED_BRANCH=$(echo $TRAVIS_BRANCH|sed 's|/|-|g')
 REPO=sheltertechsf/askdarcel-web
