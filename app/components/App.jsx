@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Intercom from 'react-intercom';
 import { connect } from 'react-redux';
+import Banner from './ui/Banner/Banner';
 import Navigation from './ui/Navigation/Navigation';
 // import CategoryPage from './find/FindPage';
 // import ResourcesTable from './search/ResourcesTable';
@@ -174,6 +175,7 @@ class App extends Component {
         />
         <div id={pageWrapId}>
           <Navigation showSearch toggleHamburgerMenu={this.toggleHamburgerMenu} />
+          <Banner />
           <div className="container">
             <Routes />
           </div>
