@@ -10,7 +10,8 @@ export default function Banner() {
         Please find the latest information on resources available during this pandemic
         {' '}
         <a className={styles.bannerLink} href="https://docs.google.com/document/d/1R9y8KLbU-oZTJheoqobmqg6TJxkwSjTkJvm6WywHURk/edit">here</a>
-        . We are working to incorporate active services into the SF Service Guide - check back for more updates.
+        . We are working to incorporate active services into the SF Service Guide
+         - check back for more updates.
       </span>
     </div>
   );
