@@ -88,6 +88,7 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, 'app/components/ui/HamburgerMenu'),
           path.resolve(__dirname, 'app/components/ui/Navigation'),
+          path.resolve(__dirname, 'app/components/ui/Banner'),
           path.resolve(__dirname, 'app/components/listing/MobileActionBar'),
           path.resolve(__dirname, 'app/components/listing/ActionSidebar'),
           path.resolve(__dirname, 'app/components/listing/ServiceAttribution'),
@@ -128,6 +129,7 @@ module.exports = {
         include: [
           path.resolve(__dirname, 'app/components/ui/HamburgerMenu'),
           path.resolve(__dirname, 'app/components/ui/Navigation'),
+          path.resolve(__dirname, 'app/components/ui/Banner'),
           path.resolve(__dirname, 'app/components/listing/MOHCDBadge'),
           path.resolve(__dirname, 'app/components/listing/HAPBadge'),
           path.resolve(__dirname, 'app/pages/HomePage'),
