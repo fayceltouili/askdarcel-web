@@ -264,4 +264,7 @@ p.message {
 // INTERCOM OVERRIDES
 .intercom-launcher-frame {
   z-index: 3 !important;
+  @media screen and (max-width: 800px) {
+    display: none !important;
+  }
 }
