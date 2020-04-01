@@ -19,10 +19,15 @@ export default class Covid extends React.Component {
             Coronavirus resources for Individuals-In-Need
             </h1>
             <p>
-              This list is compiled to link individuals experiencing homelessness to resources.  We will be updating the list continuously, when services change. Please email ]
+              This list is compiled to link individuals experiencing homelessness to resources.
+              We will be updating the list continuously, when services change.
+              <br />
+              Please email
               <a href="mailto:contact@sheltertech.org">
+                {' '}
                 contact@sheltertech.org
               </a>
+              {' '}
                 to suggest edits.
             </p>
           </header>
