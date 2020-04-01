@@ -58,11 +58,12 @@ const GuideList = () => (
   <div className={styles.wrapper}>
     <ul className={styles.list}>
       <li className={styles.item}>
-        <GuideCard
-          name="Coronavirus COVID-19"
-          link="https://docs.google.com/document/d/e/2PACX-1vRhUk0r7xAFbcb-XnMbLXXK64rv_KXsoQElDmDxyP1GwpuveNsxHOo2CiVDHf-956Njom83Xd7VkJXn/pub?embedded=true"
-          img={ImgCovid}
-        />
+        <a href="/covid">
+          <GuideCard
+            name="Coronavirus COVID-19"
+            img={ImgCovid}
+          />
+        </a>
       </li>
       <li className={styles.item}>
         <GuideCard

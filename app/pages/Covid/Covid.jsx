@@ -1,4 +1,5 @@
 import React from 'react';
+import Iframe from 'react-iframe';
 import Footer from '../../components/ui/Footer/Footer';
 
 import styles from './Covid.scss';
@@ -15,30 +16,23 @@ export default class Covid extends React.Component {
         <article className={styles.covidPage} id="covid">
           <header className={styles.covidHeader}>
             <h1>
-              SF Service Guide
-              <br />
-              COVID-19 resource guide
+            Coronavirus resources for Individuals-In-Need
             </h1>
             <p>
-              This is living document from
-              {' '}
-              <a href="ShelterTech.org">ShelterTech</a>
-              {' '}
-              of resources for individuals experiencing homelessness. We will be updating the list continuously, when services change, to ensure you have the most up to date information.
-              Please email
-              {' '}
-              <a href="mailto:contact@sheltertech.org">contact@sheltertech.org</a>
-              {' '}
-              to suggest edits.
-              See what types of places are open or closed at
-              {' '}
-              <a href="sf.gov/stay-home-except-essential-needs">sf.gov/stay-home-except-essential-needs</a>
+              This list is compiled to link individuals experiencing homelessness to resources.  We will be updating the list continuously, when services change. Please email ]
+              <a href="mailto:contact@sheltertech.org">
+                contact@sheltertech.org
+              </a>
+                to suggest edits.
             </p>
           </header>
           <section>
-            <iframe
+            <Iframe
               title="Covid-19 Resource Guide"
-              src="https://docs.google.com/document/d/e/2PACX-1vRhUk0r7xAFbcb-XnMbLXXK64rv_KXsoQElDmDxyP1GwpuveNsxHOo2CiVDHf-956Njom83Xd7VkJXn/pub?embedded=true"
+              url="https://docs.google.com/document/d/e/2PACX-1vTGpgLJDTg3sm2XhyBoNUTNUhqJjTt5lEp8IXSP_yBNrxVgZ_zkmdKPo7JcKJTbduoTRt_dYnRV9xTB/pub?embedded=false"
+              width="100%"
+              height="100%"
+              padding="0pt"
               className={styles.covidDocEmbed}
             />
           </section>
