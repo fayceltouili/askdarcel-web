@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from '../../components/ui/Footer/Footer';
 import Iframe from 'react-iframe';
+import Footer from '../../components/ui/Footer/Footer';
 
 import styles from './Covid.scss';
 
@@ -16,10 +16,14 @@ export default class Covid extends React.Component {
         <article className={styles.covidPage} id="covid">
           <header className={styles.covidHeader}>
             <h1>
-            Coronavirus resources for Individuals-In-Need            
+            Coronavirus resources for Individuals-In-Need
             </h1>
             <p>
-              This list is compiled to link individuals experiencing homelessness to resources.  We will be updating the list continuously, when services change. Please email <a href="mailto:contact@sheltertech.org">contact@sheltertech.org</a> to suggest edits.
+              This list is compiled to link individuals experiencing homelessness to resources.  We will be updating the list continuously, when services change. Please email ]
+              <a href="mailto:contact@sheltertech.org">
+                contact@sheltertech.org
+              </a>
+                to suggest edits.
             </p>
           </header>
           <section>
