@@ -19,10 +19,10 @@ export default class Covid extends React.Component {
             Coronavirus resources for Individuals-In-Need            
             </h1>
             <p>
-              This list is compiled to link individuals experiencing homelessness to resources.  We will be updating the list continuously, when services change. Please email <a href="contact@sheltertech.org">contact@sheltertech.org</a> to suggest edits.
+              This list is compiled to link individuals experiencing homelessness to resources.  We will be updating the list continuously, when services change. Please email <a href="mailto:contact@sheltertech.org">contact@sheltertech.org</a> to suggest edits.
             </p>
           </header>
-          <section className={styles.aboutSection}>
+          <section>
             <Iframe
               title="Covid-19 Resource Guide"
               url="https://docs.google.com/document/d/e/2PACX-1vTGpgLJDTg3sm2XhyBoNUTNUhqJjTt5lEp8IXSP_yBNrxVgZ_zkmdKPo7JcKJTbduoTRt_dYnRV9xTB/pub?embedded=false"
