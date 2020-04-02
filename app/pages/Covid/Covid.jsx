@@ -35,9 +35,10 @@ export default class Covid extends React.Component {
             <Iframe
               title="Covid-19 Resource Guide"
               url="https://docs.google.com/document/d/e/2PACX-1vTGpgLJDTg3sm2XhyBoNUTNUhqJjTt5lEp8IXSP_yBNrxVgZ_zkmdKPo7JcKJTbduoTRt_dYnRV9xTB/pub?embedded=false"
-              width="100%"
+              width="80%"
               height="100%"
               padding="0pt"
+              allowFullScreen="yes"
               className={styles.covidDocEmbed}
             />
           </section>
