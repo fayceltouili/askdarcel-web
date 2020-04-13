@@ -98,6 +98,9 @@ module.exports = {
           path.resolve(__dirname, 'app/pages/HomePage'),
           path.resolve(__dirname, 'app/pages/About'),
           path.resolve(__dirname, 'app/pages/Covid'),
+          path.resolve(__dirname, 'app/pages/FoodMap'),
+          path.resolve(__dirname, 'app/pages/FoodList'),
+          path.resolve(__dirname, 'app/components/ui//GDocEmbed'),
         ],
         test: /\.s?css$/,
         use: [
@@ -138,6 +141,9 @@ module.exports = {
           path.resolve(__dirname, 'app/pages/HomePage'),
           path.resolve(__dirname, 'app/pages/About'),
           path.resolve(__dirname, 'app/pages/Covid'),
+          path.resolve(__dirname, 'app/pages/FoodMap'),
+          path.resolve(__dirname, 'app/pages/FoodList'),
+          path.resolve(__dirname, 'app/components/ui/GDocEmbed'),
         ],
         test: /\.s?css$/,
         use: [

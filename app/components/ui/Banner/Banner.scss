@@ -2,7 +2,7 @@
 
 .bannerContainer {
   width: 100%;
-  padding: calc-em(20px) calc-em(30px);
+  padding: calc-em(16px) calc-em(28px);
   color: black;
   background-color: $color-yellow;
   font-size: calc-em(24px);
@@ -10,8 +10,8 @@
   strong {
     font-weight: bold;
   }
-  @media screen and (max-width: 800px) {
-    font-size: 16px;
+  @media screen and (max-width: 600px) {
+    font-size: calc-em(16px);
   }
 }
 
