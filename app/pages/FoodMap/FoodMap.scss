@@ -6,6 +6,7 @@
   position: sticky;
   text-decoration: underline;
   padding: 2em 0;
+
   @media screen and (max-width: 600px) {
     font-size: 14px;
     padding: 0;
@@ -28,7 +29,7 @@
   @media screen and (max-width: 600px) {
     padding: 4px;
     width: 300px;
-    margin: auto;
+    margin: 32px auto 0;
   }
 
   .SFGovLogo {
@@ -49,9 +50,9 @@
   width: 100%;
   height: 65vh;
   margin: auto;
+
   @media screen and (max-width: 600px) {
     width: auto;
     height: calc((100vh) - 240px);
   }
 }
-
