@@ -9,11 +9,6 @@ export default class FoodMap extends React.Component {
   render() {
     return (
       <div>
-        <div className={styles.foodBannerContainer}>
-          <a href="./FoodList">
-            View highlighted resources in SFServiceGuide
-          </a>
-        </div>
         <article className={styles.mapContainer}>
           <div className={styles.foodMapBannerCredit}>
             <img
@@ -35,6 +30,11 @@ export default class FoodMap extends React.Component {
             />
           </section>
         </article>
+        <div className={styles.foodBannerContainer}>
+          <a href="./FoodList">
+            View additional food resources in SFServiceGuide
+          </a>
+        </div>
       </div>
     );
   }
