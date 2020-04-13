@@ -119,7 +119,7 @@ const GuideList = () => (
       </li>
       <li className={styles.item}>
         <GuideCard
-          name="Shelter Access Points"
+          name="Shelter &#38; Quarantine Updates"
           link="/shelteraccess"
           img={Imgshelteraccess}
           isTypeform={false}
