@@ -41,7 +41,7 @@ const GuideCard = ({
     role: 'button',
     onClick: e => { typeform(e, link); },
   } : {
-    href: link.toString(),
+    href: link,
     target: '_blank',
   };
 
@@ -59,9 +59,9 @@ const GuideCard = ({
         <div className={styles.cardTextWrapper}>
           <div className={styles.cardText}>
             {name}
-            <a className={styles.cardLinkText} role="button" href>
+            <button className={styles.cardLinkText} type="button">
               Explore Guide →
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ const GuideList = () => (
       <li className={styles.item}>
         <GuideCard
           name="Shelter &#38; Quarantine Updates"
-          link="/shelteraccess"
+          link="/covid/shelteraccess"
           img={Imgshelteraccess}
           isTypeform={false}
         />
@@ -112,65 +112,57 @@ const GuideList = () => (
       <li className={styles.item}>
         <GuideCard
           name="Food resources"
-          link="/foodmap"
+          link="/covid/foodmap"
           img={ImgFood}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Hygiene"
-          link="/hygiene"
+          link="/covid/hygiene"
           img={Imghygiene}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Medical Services"
-          link="/medicalservices"
+          link="/covid/medicalservices"
           img={Imgmedicalservices}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Domestic Violence"
-          link="/domesticviolence"
+          link="/covid/domesticviolence"
           img={Imgdomesticviolence}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Internet Access"
-          link="/internet"
+          link="/covid/internet"
           img={Imginternet}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Financial and Job Assistance"
-          link="/financialassistance"
+          link="/covid/financialassistance"
           img={Imgfinancialassistance}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Rental Assistance"
-          link="/rentalassistance"
+          link="/covid/rentalassistance"
           img={Imgrentalassistance}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="LGBTQ Resources"
-          link="/lgbtq"
+          link="/covid/lgbtq"
           img={Imglgbtq}
-          isTypeform={false}
         />
       </li>
       {/* Note: these resource guides have temporarily been disabled due to covid.
