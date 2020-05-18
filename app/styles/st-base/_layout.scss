@@ -1,6 +1,11 @@
 @import '../utils/_colors.scss';
 @import '../utils/_layoututils.scss';
 
+
+.ReactModal__Body--open {
+  position: fixed;
+}
+
 pre {
   background: #EEE;
   margin: $padding-large;

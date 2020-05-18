@@ -97,6 +97,7 @@ module.exports = {
           path.resolve(__dirname, 'app/pages/HomePage'),
           path.resolve(__dirname, 'app/pages/About'),
           path.resolve(__dirname, 'app/pages/Covid'),
+          path.resolve(__dirname, 'app/components/ui/Modal'),
         ],
         test: /\.s?css$/,
         use: [
@@ -136,6 +137,7 @@ module.exports = {
           path.resolve(__dirname, 'app/pages/HomePage'),
           path.resolve(__dirname, 'app/pages/About'),
           path.resolve(__dirname, 'app/pages/Covid'),
+          path.resolve(__dirname, 'app/components/ui/Modal'),
         ],
         test: /\.s?css$/,
         use: [

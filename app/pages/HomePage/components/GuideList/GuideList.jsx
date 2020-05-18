@@ -1,12 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as typeformEmbed from '@typeform/embed';
 
+import ServiceDiscoveryModal from 'components/ui/Modal/ServiceDiscoveryModal';
 import styles from './GuideList.scss';
-
-
-// import ImgEviction from './assets/EvictionPrevention.jpg';
-// import ImgAffordableHousing from './assets/AffordableHousing.jpg';
 
 import ImgFamilyHomelessness from './assets/FamilyHomelessness.jpg';
 import ImgYouthHomelessness from './assets/YouthHomelessness.jpg';
@@ -21,25 +17,14 @@ import Imghygiene from './assets/hygiene.jpg';
 import Imgdomesticviolence from './assets/domesticviolence.jpg';
 import Imglgbtq from './assets/lgbtq.jpg';
 
-function typeform(event, link) {
-  const typeformReference = typeformEmbed.makePopup(
-    link,
-    {
-      mode: 'popup',
-      hideFooters: true,
-    },
-  );
-  typeformReference.open();
-}
-
 const GuideCard = ({
-  img, link, name, isTypeform = false,
+  img, link, name, categoryId,
 }) => {
-  // if this is typeform, we open the typeform modal on click.
-  // Otherwise, we just attach the link as an href.
-  const anchorTagProps = isTypeform ? {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const anchorTagProps = categoryId ? {
     role: 'button',
-    onClick: e => { typeform(e, link); },
+    onClick: () => setModalOpen(true),
   } : {
     href: link,
     target: '_blank',
@@ -60,11 +45,19 @@ const GuideCard = ({
           <div className={styles.cardText}>
             {name}
             <button className={styles.cardLinkText} type="button">
-              Explore Guide →
+                Explore Guide →
             </button>
           </div>
         </div>
       </div>
+      {modalOpen && (
+        <ServiceDiscoveryModal
+          categoryId={categoryId}
+          isOpen={modalOpen}
+          closeModal={() => setModalOpen(false)}
+          isEligibility
+        />
+      )}
     </a>
   );
 };
@@ -72,6 +65,11 @@ const GuideCard = ({
 GuideCard.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  categoryId: PropTypes.string,
+};
+
+GuideCard.defaultProps = {
+  categoryId: '',
 };
 
 const GuideList = () => (
@@ -82,7 +80,6 @@ const GuideList = () => (
           name="Shelter &#38; Quarantine Updates"
           link="/covid/shelteraccess"
           img={Imgshelteraccess}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>
@@ -90,7 +87,7 @@ const GuideList = () => (
           name="Family Homelessness"
           link="https://sheltertech.typeform.com/to/GFEzl2"
           img={ImgFamilyHomelessness}
-          isTypeform
+          categoryId="5"
         />
       </li>
       <li className={styles.item}>
@@ -98,7 +95,7 @@ const GuideList = () => (
           name="Youth Homelessness"
           link="https://sheltertech.typeform.com/to/mXv584"
           img={ImgYouthHomelessness}
-          isTypeform
+          categoryId="4"
         />
       </li>
       <li className={styles.item}>
@@ -106,7 +103,7 @@ const GuideList = () => (
           name="Adult Homelessness"
           link="https://sheltertech.typeform.com/to/KXi3Pp"
           img={ImgAdultHomelessness}
-          isTypeform
+          categoryId="4"
         />
       </li>
       <li className={styles.item}>
@@ -172,7 +169,7 @@ const GuideList = () => (
           name="Eviction Prevention"
           link="https://sheltertech.typeform.com/to/AuWYAN"
           img={ImgEviction}
-          isTypeform
+          categoryId="4"
         />
       </li> */}
       {/* <li className={styles.item}>
@@ -180,7 +177,7 @@ const GuideList = () => (
           name="Affordable Housing"
           link="https://sheltertech.typeform.com/to/w8R0b8"
           img={ImgAffordableHousing}
-          isTypeform
+          categoryId="4"
         />
       </li> */}
     </ul>
