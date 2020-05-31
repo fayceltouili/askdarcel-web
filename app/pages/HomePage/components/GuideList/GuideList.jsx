@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import * as typeformEmbed from '@typeform/embed';
 
 import ServiceDiscoveryModal from 'components/ui/Modal/ServiceDiscoveryModal';
 import styles from './GuideList.scss';
@@ -17,18 +18,40 @@ import Imghygiene from './assets/hygiene.jpg';
 import Imgdomesticviolence from './assets/domesticviolence.jpg';
 import Imglgbtq from './assets/lgbtq.jpg';
 
+function typeform(event, link) {
+  const typeformReference = typeformEmbed.makePopup(
+    link,
+    {
+      mode: 'popup',
+      hideFooters: true,
+    },
+  );
+  typeformReference.open();
+}
+
 const GuideCard = ({
-  img, link, name, categoryId,
+  img, link, name, categoryId, isTypeform = false,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const anchorTagProps = categoryId ? {
-    role: 'button',
-    onClick: () => setModalOpen(true),
-  } : {
-    href: link,
-    target: '_blank',
-  };
+  let anchorTagProps;
+
+  if (isTypeform) {
+    anchorTagProps = {
+      role: 'button',
+      onClick: e => { typeform(e, link); },
+    };
+  } else if (categoryId) {
+    anchorTagProps = {
+      role: 'button',
+      onClick: () => setModalOpen(true),
+    };
+  } else {
+    anchorTagProps = {
+      href: link,
+      target: '_blank',
+    };
+  }
 
   return (
     <a
@@ -66,10 +89,12 @@ GuideCard.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   categoryId: PropTypes.string,
+  isTypeform: PropTypes.bool,
 };
 
 GuideCard.defaultProps = {
   categoryId: '',
+  isTypeform: false,
 };
 
 const GuideList = () => (
@@ -87,7 +112,7 @@ const GuideList = () => (
           name="Family Homelessness"
           link="https://sheltertech.typeform.com/to/GFEzl2"
           img={ImgFamilyHomelessness}
-          categoryId="5"
+          isTypeform
         />
       </li>
       <li className={styles.item}>
@@ -95,7 +120,7 @@ const GuideList = () => (
           name="Youth Homelessness"
           link="https://sheltertech.typeform.com/to/mXv584"
           img={ImgYouthHomelessness}
-          categoryId="4"
+          isTypeform
         />
       </li>
       <li className={styles.item}>
@@ -103,7 +128,7 @@ const GuideList = () => (
           name="Adult Homelessness"
           link="https://sheltertech.typeform.com/to/KXi3Pp"
           img={ImgAdultHomelessness}
-          categoryId="4"
+          isTypeform
         />
       </li>
       <li className={styles.item}>
@@ -169,7 +194,7 @@ const GuideList = () => (
           name="Eviction Prevention"
           link="https://sheltertech.typeform.com/to/AuWYAN"
           img={ImgEviction}
-          categoryId="4"
+          isTypeform
         />
       </li> */}
       {/* <li className={styles.item}>
@@ -177,7 +202,7 @@ const GuideList = () => (
           name="Affordable Housing"
           link="https://sheltertech.typeform.com/to/w8R0b8"
           img={ImgAffordableHousing}
-          categoryId="4"
+          isTypeform
         />
       </li> */}
     </ul>
