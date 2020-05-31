@@ -41,6 +41,11 @@ BaseModal.propTypes = {
   backButtonText: PropTypes.string,
   closeModal: PropTypes.func,
   modalContent: PropTypes.element,
+  /**
+   * Defaults to false. When false, the modal displays as a standard floating
+   * modal with a static overlay behind it. When true, the modal expands to fit
+   * the full screen, so no overlay is visible.
+   */
   isFullScreen: PropTypes.bool,
 };
 
