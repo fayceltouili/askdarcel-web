@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as typeformEmbed from '@typeform/embed';
 
+import ServiceDiscoveryModal from 'components/ui/Modal/ServiceDiscoveryModal';
 import styles from './GuideList.scss';
-
-
-// import ImgEviction from './assets/EvictionPrevention.jpg';
-// import ImgAffordableHousing from './assets/AffordableHousing.jpg';
 
 import ImgFamilyHomelessness from './assets/FamilyHomelessness.jpg';
 import ImgYouthHomelessness from './assets/YouthHomelessness.jpg';
@@ -33,17 +30,28 @@ function typeform(event, link) {
 }
 
 const GuideCard = ({
-  img, link, name, isTypeform = false,
+  img, link, name, categoryId, isTypeform = false,
 }) => {
-  // if this is typeform, we open the typeform modal on click.
-  // Otherwise, we just attach the link as an href.
-  const anchorTagProps = isTypeform ? {
-    role: 'button',
-    onClick: e => { typeform(e, link); },
-  } : {
-    href: link,
-    target: '_blank',
-  };
+  const [modalOpen, setModalOpen] = useState(false);
+
+  let anchorTagProps;
+
+  if (isTypeform) {
+    anchorTagProps = {
+      role: 'button',
+      onClick: e => { typeform(e, link); },
+    };
+  } else if (categoryId) {
+    anchorTagProps = {
+      role: 'button',
+      onClick: () => setModalOpen(true),
+    };
+  } else {
+    anchorTagProps = {
+      href: link,
+      target: '_blank',
+    };
+  }
 
   return (
     <a
@@ -60,11 +68,19 @@ const GuideCard = ({
           <div className={styles.cardText}>
             {name}
             <button className={styles.cardLinkText} type="button">
-              Explore Guide →
+                Explore Guide →
             </button>
           </div>
         </div>
       </div>
+      {modalOpen && (
+        <ServiceDiscoveryModal
+          categoryId={categoryId}
+          isOpen={modalOpen}
+          closeModal={() => setModalOpen(false)}
+          isEligibility
+        />
+      )}
     </a>
   );
 };
@@ -72,6 +88,13 @@ const GuideCard = ({
 GuideCard.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  categoryId: PropTypes.string,
+  isTypeform: PropTypes.bool,
+};
+
+GuideCard.defaultProps = {
+  categoryId: '',
+  isTypeform: false,
 };
 
 const GuideList = () => (
@@ -82,7 +105,6 @@ const GuideList = () => (
           name="Shelter &#38; Quarantine Updates"
           link="/covid/shelteraccess"
           img={Imgshelteraccess}
-          isTypeform={false}
         />
       </li>
       <li className={styles.item}>

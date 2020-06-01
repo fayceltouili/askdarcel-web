@@ -1,8 +1,10 @@
 @import '../utils/_colors.scss';
 @import '../utils/_layoututils.scss';
 
-////////////////////////////////////////////////////////////////////////////////////////
-// GLOBAL MODAL STYLES
+
+.ReactModal__Body--open {
+  position: fixed;
+}
 
 pre {
   background: #EEE;
@@ -88,73 +90,6 @@ pre {
 
 .block {
   display: block;
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-// GLOBAL MODAL STYLES
-
-pre {
-  background: #EEE;
-  margin: $padding-large;
-  padding: $padding-large;
-  border-radius: $padding-default;
-  overflow-x: auto;
-}
-
-// Card Styles
-.card {
-  border: 1px solid #CCC;
-  width: 100%;
-  // min-width: 440px;
-  border-radius: 2px;
-  display: inline-block;
-  text-decoration: none;
-  color: #999;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  &:hover {
-    text-decoration: none;
-    background: #EEE;
-  }
-
-  img { // TODO This assumes only one image per card
-    float: right;
-    max-width: 100px;
-    margin-left: $padding-default;
-  }
-
-  .content {
-    padding: $padding-default;
-
-    h3 {
-      color: #333;
-    }
-
-    h4 {
-      font-size: 14px;
-
-      span {
-        display: inline-block;
-
-        &::after {
-          content: ' • ';
-          padding: $padding-default;
-        }
-
-        &:last-of-type {
-          &::after {
-            content: ''
-          }
-        }
-      }
-    }
-
-    p {
-      font-size: 14px;
-    }
-  }
 }
 
 // Listing page action buttons
