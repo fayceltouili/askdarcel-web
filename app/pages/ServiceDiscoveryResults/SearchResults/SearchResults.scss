@@ -1,0 +1,62 @@
+@import '../../../styles/utils/_helpers.scss';
+
+.searchResultsContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.searchResult {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding-top: 21px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  border-left: 1px solid #F4F4F4;
+  border-bottom: 1px solid #F4F4F4;
+}
+
+.searchText {
+  flex-grow: 2;
+
+  .title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .address {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+  
+  .description {
+    font-size: 18px;
+    margin: 32px 0;
+  }
+  
+  .serviceOf {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+}
+
+.sideLinks {
+  flex-shrink: 0;
+  width: 250px;
+  margin: 0 100px;
+  font-weight: bold;
+  font-size: 18px;
+  color: $color-brand;
+  padding-top: 32px;
+
+  .divider {
+    border-top: 1px solid $color-grey3;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
