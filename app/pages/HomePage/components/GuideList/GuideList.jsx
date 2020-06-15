@@ -31,7 +31,7 @@ function typeform(event, link) {
 }
 
 const GuideCard = ({
-  img, link, name, categoryId, isTypeform = false,
+  img, link, name, categoryId, algoliaCategoryName, steps, isTypeform = false,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -77,10 +77,11 @@ const GuideCard = ({
       {modalOpen && (
         <ServiceDiscoveryModal
           categoryId={categoryId}
+          algoliaCategoryName={algoliaCategoryName}
+          categoryName={name}
           isOpen={modalOpen}
           closeModal={() => setModalOpen(false)}
-          // TODO: allow the steps to be dynamic based on the category
-          steps={[STEPS.ELIGIBILITIES, STEPS.RESULTS]}
+          steps={steps}
         />
       )}
     </a>
@@ -89,13 +90,18 @@ const GuideCard = ({
 
 GuideCard.propTypes = {
   name: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
   categoryId: PropTypes.string,
+  algoliaCategoryName: PropTypes.string,
+  steps: PropTypes.array,
   isTypeform: PropTypes.bool,
 };
 
 GuideCard.defaultProps = {
+  link: undefined,
   categoryId: '',
+  algoliaCategoryName: '',
+  steps: [],
   isTypeform: false,
 };
 
@@ -138,13 +144,17 @@ const GuideList = () => (
           name="Food resources"
           img={ImgFood}
           categoryId="1000001"
+          algoliaCategoryName="Covid-food"
+          steps={[STEPS.ELIGIBILITIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Hygiene"
-          link="/covid/hygiene"
           img={Imghygiene}
+          categoryId="1000002"
+          algoliaCategoryName="Covid-hygiene"
+          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>

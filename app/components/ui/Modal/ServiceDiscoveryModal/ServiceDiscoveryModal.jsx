@@ -66,7 +66,9 @@ class ServiceDiscoveryModal extends Component {
   }
 
   render() {
-    const { closeModal, steps } = this.props;
+    const {
+      closeModal, steps, categoryName, algoliaCategoryName,
+    } = this.props;
     const {
       eligibilities, subcategories, selectedEligibilities, selectedSubcategories, currentStep,
     } = this.state;
@@ -84,7 +86,7 @@ class ServiceDiscoveryModal extends Component {
                     <label>
                       <input
                         type="checkbox"
-                        checked={selectedEligibilities[option.id]}
+                        value={selectedEligibilities[option.id]}
                         onChange={() => this.handleEligibilityClick(option.id)}
                       />
                       <span>{option.name}</span>
@@ -105,7 +107,7 @@ class ServiceDiscoveryModal extends Component {
                     <label>
                       <input
                         type="checkbox"
-                        checked={selectedSubcategories[option.id]}
+                        value={selectedSubcategories[option.id]}
                         onChange={() => this.handleSubcategoryClick(option.id)}
                       />
                       <span>{option.name}</span>
@@ -119,6 +121,8 @@ class ServiceDiscoveryModal extends Component {
         default:
           return (
             <ServiceDiscoveryResults
+              categoryName={categoryName}
+              algoliaCategoryName={algoliaCategoryName}
               eligibilities={eligibilities}
               subcategories={subcategories}
               selectedEligibilities={selectedEligibilities}

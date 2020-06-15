@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { InstantSearch } from 'react-instantsearch/dom';
+import { InstantSearch, Configure } from 'react-instantsearch/dom';
 import config from '../../config';
 import OpenNowFilter from './OpenNowFilter';
-import EligibilitiesListFilter from './EligibilitiesListFilter';
+import RefinementListFilter from './RefinementListFilter';
+import ClearAllFilters from './ClearAllFilters';
 
 import SearchResults from './SearchResults/SearchResults';
 import styles from './ServiceDiscoveryResults.scss';
@@ -13,21 +14,23 @@ export default class ServiceDiscoveryResults extends Component {
     super(props);
 
     const {
+      eligibilities,
       selectedEligibilities,
-      // selectedSubcategories,
+      subcategories,
+      selectedSubcategories,
     } = props;
 
+    const initialEligibilityRefinement = eligibilities
+      .filter(elg => selectedEligibilities[elg.id]).map(e => e.name);
+    const initialSubcategoriesRefinement = subcategories
+      .filter(elg => selectedSubcategories[elg.id]).map(e => e.name);
+
     this.state = {
-      openNow: false,
-      selectedEligibilities,
-      // TODO: will we have a subcategory filter too?
-      // selectedSubcategories,
-      searchState: { query: 'food' },
+      initialEligibilityRefinement,
+      initialSubcategoriesRefinement,
+      searchState: { query: '' },
     };
 
-    this.handleClearAllClick = this.handleClearAllClick.bind(this);
-    this.handleEligibilityClick = this.handleEligibilityClick.bind(this);
-    this.handleOpenNowClick = this.handleOpenNowClick.bind(this);
     this.onSearchStateChange = this.onSearchStateChange.bind(this);
   }
 
@@ -35,42 +38,26 @@ export default class ServiceDiscoveryResults extends Component {
     this.setState({ searchState: nextSearchState });
   }
 
-  handleClearAllClick() {
-    this.setState({
-      openNow: false,
-      selectedEligibilities: {},
-    });
-  }
-
-  handleOpenNowClick() {
-    const { openNow } = this.state;
-    this.setState({
-      openNow: !openNow,
-    });
-  }
-
-  handleEligibilityClick(optionId) {
-    const { selectedEligibilities } = this.state;
-    this.setState({
-      selectedEligibilities: {
-        ...selectedEligibilities,
-        [optionId]: !selectedEligibilities[optionId],
-      },
-    });
-  }
-
   render() {
-    const { eligibilities } = this.props;
+    const {
+      eligibilities,
+      selectedEligibilities,
+      subcategories,
+      selectedSubcategories,
+      categoryName,
+      algoliaCategoryName,
+    } = this.props;
 
     const {
-      selectedEligibilities,
+      initialEligibilityRefinement,
+      initialSubcategoriesRefinement,
       searchState,
     } = this.state;
 
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Food resources</h1>
+          <h1 className={styles.title}>{categoryName}</h1>
         </div>
         <InstantSearch
           appId={config.ALGOLIA_APPLICATION_ID}
@@ -79,31 +66,39 @@ export default class ServiceDiscoveryResults extends Component {
           searchState={searchState}
           onSearchStateChange={this.onSearchStateChange}
         >
+          <Configure filters={`categories:'${algoliaCategoryName}'`} />
           <div className={styles.flexContainer}>
             <div className={styles.sidebar}>
               <div className={styles.filterResourcesTitle}>Filter Resources</div>
-              <div
-                role="button"
-                tabIndex="0"
-                className={styles.clearAll}
-                onClick={this.handleClearAllClick}
-              >
-              Clear all
-              </div>
+              <ClearAllFilters />
               <div className={styles.filterGroup}>
                 <div className={styles.filterTitle}>Availability</div>
                 <OpenNowFilter attribute="open_times" />
               </div>
 
+              {!!eligibilities.length && (
               <div className={styles.filterGroup}>
                 <div className={styles.filterTitle}>Eligibilities</div>
-                <EligibilitiesListFilter
+                <RefinementListFilter
                   attribute="eligibilities"
-                  limit={100}
-                  availableEligibilities={eligibilities}
-                  selectedEligibilities={selectedEligibilities}
+                  availableOptions={eligibilities}
+                  selectedOptions={selectedEligibilities}
+                  defaultRefinement={initialEligibilityRefinement}
                 />
               </div>
+              )}
+
+              {!!subcategories.length && (
+              <div className={styles.filterGroup}>
+                <div className={styles.filterTitle}>Categories</div>
+                <RefinementListFilter
+                  attribute="categories"
+                  availableOptions={subcategories}
+                  selectedOptions={selectedSubcategories}
+                  defaultRefinement={initialSubcategoriesRefinement}
+                />
+              </div>
+              )}
 
             </div>
             <div className={styles.results}>
