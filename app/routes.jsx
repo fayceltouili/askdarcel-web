@@ -10,6 +10,7 @@ import OrganizationEditPage from './pages/OrganizationEditPage';
 import { OrganizationListingPage } from './pages/OrganizationListingPage';
 import { SearchResultsPage } from './pages/SearchPage';
 import { ServiceListingPage } from './pages/ServiceListingPage';
+import ServiceDiscoveryResults from './pages/ServiceDiscoveryResults';
 
 import { PrivacyPolicyPage } from './pages/legal/PrivacyPolicy';
 import { TermsOfServicePage } from './pages/legal/TermsOfService';
@@ -39,6 +40,7 @@ export default () => (
     <Route path="/privacy-policy" component={PrivacyPolicyPage} />
     <Route path="/search" component={SearchResultsPage} />
     <Route path="/services/:service" component={ServiceListingPage} />
+    <Route path="/service-discovery-results/:category_id" component={ServiceDiscoveryResults} />
     <Route path="/terms-of-service" component={TermsOfServicePage} />
 
     {/* Legacy redirects */}

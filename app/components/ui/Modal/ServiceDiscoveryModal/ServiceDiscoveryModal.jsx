@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import qs from 'qs';
 import { STEPS } from 'components/ui/Modal/ServiceDiscoveryModal/constants';
-import ServiceDiscoveryResults from '../../../../pages/ServiceDiscoveryResults/ServiceDiscoveryResults';
 import { BaseModal } from '../Modal';
 import * as dataService from '../../../../utils/DataService';
 
@@ -67,7 +68,7 @@ class ServiceDiscoveryModal extends Component {
 
   render() {
     const {
-      closeModal, steps, categoryName, algoliaCategoryName,
+      closeModal, steps, categoryId,
     } = this.props;
     const {
       eligibilities, subcategories, selectedEligibilities, selectedSubcategories, currentStep,
@@ -119,16 +120,28 @@ class ServiceDiscoveryModal extends Component {
           );
         case STEPS.RESULTS:
         default:
+        {
+          const searchState = {
+            refinementList: {
+              eligibilities: eligibilities
+                .filter(elg => selectedEligibilities[elg.id])
+                .map(el => el.name),
+              categories: subcategories
+                .filter(c => selectedSubcategories[c.id])
+                .map(c => c.name),
+            },
+          };
+          const search = qs.stringify(searchState, { encodeValuesOnly: true });
           return (
-            <ServiceDiscoveryResults
-              categoryName={categoryName}
-              algoliaCategoryName={algoliaCategoryName}
-              eligibilities={eligibilities}
-              subcategories={subcategories}
-              selectedEligibilities={selectedEligibilities}
-              selectedSubcategories={selectedSubcategories}
+            <Redirect
+              push
+              to={{
+                pathname: `/service-discovery-results/${categoryId}`,
+                search: `?${search}`,
+              }}
             />
           );
+        }
       }
     };
 
