@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import * as typeformEmbed from '@typeform/embed';
 
-import ServiceDiscoveryModal from 'components/ui/Modal/ServiceDiscoveryModal/ServiceDiscoveryModal';
-import { STEPS } from 'components/ui/Modal/ServiceDiscoveryModal/constants';
 import styles from './GuideList.scss';
 
 import ImgFamilyHomelessness from './assets/FamilyHomelessness.jpg';
@@ -31,9 +30,9 @@ function typeform(event, link) {
 }
 
 const GuideCard = ({
-  img, link, name, categoryId, algoliaCategoryName, categorySlug, steps, isTypeform = false,
+  img, link, name, categorySlug, isTypeform = false,
 }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const history = useHistory();
 
   let anchorTagProps;
 
@@ -42,10 +41,10 @@ const GuideCard = ({
       role: 'button',
       onClick: e => { typeform(e, link); },
     };
-  } else if (categoryId) {
+  } else if (categorySlug) {
     anchorTagProps = {
       role: 'button',
-      onClick: () => setModalOpen(true),
+      onClick: () => history.push(`/${categorySlug}/form`),
     };
   } else {
     anchorTagProps = {
@@ -74,17 +73,6 @@ const GuideCard = ({
           </div>
         </div>
       </div>
-      {modalOpen && (
-        <ServiceDiscoveryModal
-          categoryId={categoryId}
-          categorySlug={categorySlug}
-          algoliaCategoryName={algoliaCategoryName}
-          categoryName={name}
-          isOpen={modalOpen}
-          closeModal={() => setModalOpen(false)}
-          steps={steps}
-        />
-      )}
     </a>
   );
 };
@@ -92,17 +80,13 @@ const GuideCard = ({
 GuideCard.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string,
-  categoryId: PropTypes.string,
-  algoliaCategoryName: PropTypes.string,
-  steps: PropTypes.array,
+  categorySlug: PropTypes.string,
   isTypeform: PropTypes.bool,
 };
 
 GuideCard.defaultProps = {
   link: undefined,
-  categoryId: '',
-  algoliaCategoryName: '',
-  steps: [],
+  categorySlug: '',
   isTypeform: false,
 };
 
@@ -144,80 +128,56 @@ const GuideList = () => (
         <GuideCard
           name="Food resources"
           img={ImgFood}
-          categoryId="1000001"
-          algoliaCategoryName="Covid-food"
           categorySlug="food-resources"
-          steps={[STEPS.ELIGIBILITIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Hygiene"
           img={Imghygiene}
-          categoryId="1000002"
-          algoliaCategoryName="Covid-hygiene"
           categorySlug="hygiene-resources"
-          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Medical Services"
           img={Imgmedicalservices}
-          categoryId="1000005"
-          algoliaCategoryName="Covid-health"
           categorySlug="medical-services-resources"
-          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Domestic Violence"
           img={Imgdomesticviolence}
-          categoryId="1000006"
-          algoliaCategoryName="Covid-domesticviolence"
           categorySlug="domestic-violence-resources"
-          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Internet Access"
           img={Imginternet}
-          categoryId="1000007"
-          algoliaCategoryName="Covid-internet"
           categorySlug="internet-access-resources"
-          steps={[STEPS.ELIGIBILITIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Financial and Job Assistance"
           img={Imgfinancialassistance}
-          categoryId="1000003"
-          algoliaCategoryName="Covid-finance"
           categorySlug="financial-and-job-assistance-resources"
-          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="Rental Assistance"
           img={Imgrentalassistance}
-          categoryId="1000004"
-          algoliaCategoryName="Covid-housing"
           categorySlug="rental-assistance-resources"
-          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       <li className={styles.item}>
         <GuideCard
           name="LGBTQ Resources"
           img={Imglgbtq}
-          categoryId="1000008"
-          algoliaCategoryName="Covid-lgbtqa"
           categorySlug="lgbtq-resources"
-          steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
       {/* Note: these resource guides have temporarily been disabled due to covid.

@@ -26,14 +26,14 @@ class ServiceDiscoveryModal extends Component {
   componentDidMount() {
     const { categoryId } = this.props;
 
-    dataService.get(`api/eligibilities?category_id=${categoryId}`).then(response => {
+    dataService.get(`/api/eligibilities?category_id=${categoryId}`).then(response => {
       const { eligibilities } = response;
       this.setState({
         eligibilities,
       });
     });
 
-    dataService.get(`api/categories/subcategories?id=${categoryId}`).then(response => {
+    dataService.get(`/api/categories/subcategories?id=${categoryId}`).then(response => {
       const { categories } = response;
       this.setState({
         subcategories: categories,

@@ -7,6 +7,7 @@ import qs from 'qs';
 import config from '../../config';
 import Loader from '../../components/ui/Loader';
 import * as dataService from '../../utils/DataService';
+import { CATEGORIES } from '../../components/ui/Modal/ServiceDiscoveryModal/constants';
 
 import ClearAllFilters from './ClearAllFilters';
 import OpenNowFilter from './OpenNowFilter';
@@ -20,11 +21,6 @@ const createURL = state => `?${qs.stringify(state, { encodeValuesOnly: true })}`
 const searchStateToURL = (location, searchState) => (searchState ? `${location.pathname}${createURL(searchState)}` : '');
 
 const urlToSearchState = location => qs.parse(location.search.slice(1));
-
-const CATEGORIES = [
-  { id: '1000001', slug: 'food-resources', name: 'Food resources' },
-  { id: '1000002', slug: 'hygiene-resources', name: 'Hygiene resources' },
-];
 
 
 /** Wrapper component that handles state management, URL parsing, and external API requests. */
