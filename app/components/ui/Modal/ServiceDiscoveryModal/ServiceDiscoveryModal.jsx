@@ -68,7 +68,7 @@ class ServiceDiscoveryModal extends Component {
 
   render() {
     const {
-      closeModal, steps, categoryId,
+      closeModal, steps, categorySlug,
     } = this.props;
     const {
       eligibilities, subcategories, selectedEligibilities, selectedSubcategories, currentStep,
@@ -136,7 +136,7 @@ class ServiceDiscoveryModal extends Component {
             <Redirect
               push
               to={{
-                pathname: `/service-discovery-results/${categoryId}`,
+                pathname: `/${categorySlug}/results`,
                 search: `?${search}`,
               }}
             />

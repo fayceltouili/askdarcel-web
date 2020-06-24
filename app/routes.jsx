@@ -40,8 +40,8 @@ export default () => (
     <Route path="/privacy-policy" component={PrivacyPolicyPage} />
     <Route path="/search" component={SearchResultsPage} />
     <Route path="/services/:service" component={ServiceListingPage} />
-    <Route path="/service-discovery-results/:category_id" component={ServiceDiscoveryResults} />
     <Route path="/terms-of-service" component={TermsOfServicePage} />
+    <Route path="/:categorySlug/results" component={ServiceDiscoveryResults} />
 
     {/* Legacy redirects */}
     <Redirect path="/resource/new" to="/organizations/new" />

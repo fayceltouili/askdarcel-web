@@ -31,7 +31,7 @@ function typeform(event, link) {
 }
 
 const GuideCard = ({
-  img, link, name, categoryId, algoliaCategoryName, steps, isTypeform = false,
+  img, link, name, categoryId, algoliaCategoryName, categorySlug, steps, isTypeform = false,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -77,6 +77,7 @@ const GuideCard = ({
       {modalOpen && (
         <ServiceDiscoveryModal
           categoryId={categoryId}
+          categorySlug={categorySlug}
           algoliaCategoryName={algoliaCategoryName}
           categoryName={name}
           isOpen={modalOpen}
@@ -145,6 +146,7 @@ const GuideList = () => (
           img={ImgFood}
           categoryId="1000001"
           algoliaCategoryName="Covid-food"
+          categorySlug="food-resources"
           steps={[STEPS.ELIGIBILITIES, STEPS.RESULTS]}
         />
       </li>
@@ -154,6 +156,7 @@ const GuideList = () => (
           img={Imghygiene}
           categoryId="1000002"
           algoliaCategoryName="Covid-hygiene"
+          categorySlug="hygiene-resources"
           steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
@@ -163,6 +166,7 @@ const GuideList = () => (
           img={Imgmedicalservices}
           categoryId="1000005"
           algoliaCategoryName="Covid-health"
+          categorySlug="medical-services-resources"
           steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
@@ -172,6 +176,7 @@ const GuideList = () => (
           img={Imgdomesticviolence}
           categoryId="1000006"
           algoliaCategoryName="Covid-domesticviolence"
+          categorySlug="domestic-violence-resources"
           steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
@@ -181,6 +186,7 @@ const GuideList = () => (
           img={Imginternet}
           categoryId="1000007"
           algoliaCategoryName="Covid-internet"
+          categorySlug="internet-access-resources"
           steps={[STEPS.ELIGIBILITIES, STEPS.RESULTS]}
         />
       </li>
@@ -190,6 +196,7 @@ const GuideList = () => (
           img={Imgfinancialassistance}
           categoryId="1000003"
           algoliaCategoryName="Covid-finance"
+          categorySlug="financial-and-job-assistance-resources"
           steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
@@ -199,6 +206,7 @@ const GuideList = () => (
           img={Imgrentalassistance}
           categoryId="1000004"
           algoliaCategoryName="Covid-housing"
+          categorySlug="rental-assistance-resources"
           steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>
@@ -208,6 +216,7 @@ const GuideList = () => (
           img={Imglgbtq}
           categoryId="1000008"
           algoliaCategoryName="Covid-lgbtqa"
+          categorySlug="lgbtq-resources"
           steps={[STEPS.SUBCATEGORIES, STEPS.RESULTS]}
         />
       </li>

@@ -21,16 +21,17 @@ const searchStateToURL = (location, searchState) => (searchState ? `${location.p
 
 const urlToSearchState = location => qs.parse(location.search.slice(1));
 
-
-const categoryIDToName = new Map([
-  ['1000001', 'Food resources'],
-  ['1000002', 'Hygiene'],
-]);
+const CATEGORIES = [
+  { id: '1000001', slug: 'food-resources', name: 'Food resources' },
+  { id: '1000002', slug: 'hygiene-resources', name: 'Hygiene resources' },
+];
 
 
 /** Wrapper component that handles state management, URL parsing, and external API requests. */
 const ServiceDiscoveryResults = ({ history, location, match }) => {
-  const categoryID = match.params.category_id;
+  const { categorySlug } = match.params;
+  const category = CATEGORIES.find(c => c.slug === categorySlug);
+  if (category === undefined) { throw new Error(`Unknown category slug ${categorySlug}`); }
   const [parentCategory, setParentCategory] = useState(null);
   const [eligibilities, setEligibilities] = useState(null);
   const [subcategories, setSubcategories] = useState(null);
@@ -43,22 +44,22 @@ const ServiceDiscoveryResults = ({ history, location, match }) => {
 
   // TODO: Handle failure?
   useEffect(() => {
-    dataService.get(`/api/categories/${categoryID}`).then(response => {
+    dataService.get(`/api/categories/${category.id}`).then(response => {
       setParentCategory(response.category);
     });
-  }, [categoryID]);
+  }, [category.id]);
 
   useEffect(() => {
-    dataService.get(`/api/eligibilities?category_id=${categoryID}`).then(response => {
+    dataService.get(`/api/eligibilities?category_id=${category.id}`).then(response => {
       setEligibilities(response.eligibilities);
     });
-  }, [categoryID]);
+  }, [category.id]);
 
   useEffect(() => {
-    dataService.get(`/api/categories/subcategories?id=${categoryID}`).then(response => {
+    dataService.get(`/api/categories/subcategories?id=${category.id}`).then(response => {
       setSubcategories(response.categories);
     });
-  }, [categoryID]);
+  }, [category.id]);
 
   const isLoading = (parentCategory === null)
     || (eligibilities === null)
@@ -68,12 +69,11 @@ const ServiceDiscoveryResults = ({ history, location, match }) => {
     return <Loader />;
   }
 
-  const categoryName = categoryIDToName.get(categoryID);
   return (
     <InnerServiceDiscoveryResults
       eligibilities={eligibilities}
       subcategories={subcategories}
-      categoryName={categoryName}
+      categoryName={category.name}
       algoliaCategoryName={parentCategory.name}
       searchState={searchState}
       onSearchStateChange={onSearchStateChange}
@@ -87,7 +87,7 @@ ServiceDiscoveryResults.propTypes = {
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      category_id: PropTypes.string.isRequired,
+      categorySlug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
