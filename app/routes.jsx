@@ -10,6 +10,8 @@ import OrganizationEditPage from './pages/OrganizationEditPage';
 import { OrganizationListingPage } from './pages/OrganizationListingPage';
 import { SearchResultsPage } from './pages/SearchPage';
 import { ServiceListingPage } from './pages/ServiceListingPage';
+import ServiceDiscoveryForm from './pages/ServiceDiscoveryForm';
+import ServiceDiscoveryResults from './pages/ServiceDiscoveryResults';
 
 import { PrivacyPolicyPage } from './pages/legal/PrivacyPolicy';
 import { TermsOfServicePage } from './pages/legal/TermsOfService';
@@ -40,6 +42,8 @@ export default () => (
     <Route path="/search" component={SearchResultsPage} />
     <Route path="/services/:service" component={ServiceListingPage} />
     <Route path="/terms-of-service" component={TermsOfServicePage} />
+    <Route path="/:categorySlug/form" component={ServiceDiscoveryForm} />
+    <Route path="/:categorySlug/results" component={ServiceDiscoveryResults} />
 
     {/* Legacy redirects */}
     <Redirect path="/resource/new" to="/organizations/new" />
