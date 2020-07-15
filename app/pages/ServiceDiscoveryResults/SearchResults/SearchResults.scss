@@ -18,6 +18,14 @@
   padding-left: 24px;
   border-left: 1px solid #F4F4F4;
   border-bottom: 1px solid #F4F4F4;
+
+  @media screen and (max-width: 1120px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 18px 20px;
+  }
 }
 
 .searchText {
@@ -26,22 +34,39 @@
   .title {
     font-weight: bold;
     font-size: 20px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
   }
-  
+
   .address {
     font-size: 18px;
     margin-top: 12px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
+    }
   }
-  
+
   .description {
     font-size: 18px;
     margin: 32px 0;
+
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
+    }
   }
-  
+
   .serviceOf {
     font-size: 18px;
     font-style: italic;
     margin-bottom: 24px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -53,6 +78,19 @@
   font-size: 18px;
   color: $color-brand;
   padding-top: 32px;
+
+  @media screen and (max-width: 1120px) {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    width: inherit;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-top: 16px;
+    margin-top: 0;
+    font-size: 16px;
+  }
 
   .sideLink {
     display: flex;
