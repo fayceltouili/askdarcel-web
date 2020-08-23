@@ -55,8 +55,14 @@ class HomePage extends React.Component {
           description="Find food, housing, health, and coronavirus resources in San Francisco."
         />
         <Section
-          title="Resource Guides"
-          description="Get guided help with many of the most common issues people are facing in San Francisco. Updated regularly."
+          title="COVID-19 Resource Guides"
+          description="Get guided help for common COVID-19 related issues people are facing in San Francisco."
+        >
+          <Guidelist />
+        </Section>
+        <Section
+          title="Get step-by-step help"
+          description="Get guided help with many of the most common issues peeople are facing in San Francisco."
         >
           <Guidelist />
         </Section>
