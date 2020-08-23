@@ -56,7 +56,7 @@ const SearchResult = ({ hit, index }) => {
   const longitude = _get(hit, 'addresses[0].longitude');
   const url = hit.url || hit.website;
   const serviceId = hit.service_id;
-  
+
   return (
     <div className={styles.searchResult}>
       <div className={styles.searchText}>
