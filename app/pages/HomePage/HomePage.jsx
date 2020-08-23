@@ -6,7 +6,6 @@ import qs from 'qs';
 
 import Footer from 'components/ui/Footer/Footer';
 import Partners from 'components/ui/Partners/Partners';
-import CategoryList from './components/CategoryList';
 import HomePageHero from './components/HomePageHero';
 import SearchBar from './components/SearchBar';
 import Guidelist from './components/GuideList';
@@ -24,13 +23,11 @@ VerticalSpacing.propTypes = {
 
 class HomePage extends React.Component {
   state = {
-    categories: [],
     resourceCount: undefined,
     searchValue: '',
   };
 
   componentDidMount() {
-    this.loadCategoriesFromServer();
     this.loadResourceCountFromServer();
   }
 
@@ -43,12 +40,6 @@ class HomePage extends React.Component {
     }
   }
 
-  loadCategoriesFromServer() {
-    ax.get('/api/categories/featured').then(resp => {
-      this.setState({ categories: resp.data.categories });
-    });
-  }
-
   loadResourceCountFromServer() {
     ax.get('/api/resources/count').then(resp => {
       this.setState({ resourceCount: resp.data });
@@ -56,9 +47,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const {
-      categories, resourceCount, searchValue,
-    } = this.state;
+    const { resourceCount, searchValue } = this.state;
     return (
       <div className="find-page">
         <HomePageHero
@@ -81,7 +70,6 @@ class HomePage extends React.Component {
             onChange={newSearchValue => this.setState({ searchValue: newSearchValue })}
             value={searchValue}
           />
-          <CategoryList categories={categories} />
         </Section>
         <Partners />
         <Footer />
