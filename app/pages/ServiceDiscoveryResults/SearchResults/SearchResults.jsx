@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 import { get as _get } from 'lodash';
 import { connectStateResults } from 'react-instantsearch/connectors';
@@ -54,11 +55,14 @@ const SearchResult = ({ hit, index }) => {
   const latitude = _get(hit, 'addresses[0].latitude');
   const longitude = _get(hit, 'addresses[0].longitude');
   const url = hit.url || hit.website;
-
+  const serviceId = hit.service_id;
+  
   return (
     <div className={styles.searchResult}>
       <div className={styles.searchText}>
-        <div className={styles.title}>{ `${index + 1}. ${hit.name}`}</div>
+        <div className={styles.title}>
+          <Link to={`/services/${serviceId}`}>{`${index + 1}. ${hit.name}`}</Link>
+        </div>
         <div className={styles.address}>{renderAddressMetadata(hit)}</div>
         <ReactMarkdown className={`rendered-markdown ${styles.description}`} source={hit.long_description} />
         <div className={styles.serviceOf}>{hit.service_of}</div>
