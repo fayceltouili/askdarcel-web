@@ -88,7 +88,7 @@ const SearchResult = ({ hit, index }) => {
           && (
             <div className={styles.sideLink}>
               <img src={images.icon('popout-blue')} alt="website" className={styles.sideLinkIcon} />
-              <a href={url} className={styles.sideLinkText}>Go to website</a>
+              <a target="_blank" rel="noopener noreferrer" href={url} className={styles.sideLinkText}>Go to website</a>
             </div>
           )
         }
