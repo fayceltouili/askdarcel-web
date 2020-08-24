@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import * as ax from 'axios';
 import qs from 'qs';
@@ -8,18 +7,37 @@ import Footer from 'components/ui/Footer/Footer';
 import Partners from 'components/ui/Partners/Partners';
 import HomePageHero from './components/HomePageHero';
 import SearchBar from './components/SearchBar';
-import Guidelist from './components/GuideList';
 import Section from './components/Section';
+import ResourceList from './components/ResourceList/ResourceList';
 
+const covidResources = [
+  { name: 'Food', icon: 'food', categorySlug: 'food-resources' },
+  { name: 'Showers and Restrooms', icon: 'shower', categorySlug: 'hygiene-resources' },
+  { name: 'Access Points and Shelters', icon: 'bed', link: '/covid/shelteraccess' },
+  { name: 'Financial and Job Assistance', icon: 'employment', categorySlug: 'financial-and-job-assistance-resources' },
+  { name: 'Rent and Eviction Help', icon: 'eviction-prevention', categorySlug: 'rental-assistance-resources' },
+  { name: 'COVID-19 Testing & Other Health Services', icon: 'hospital', categorySlug: 'medical-services-resources' },
+  { name: 'Domestic Violence', icon: 'warning', categorySlug: 'domestic-violence-resources' },
+  { name: 'Internet Access', icon: 'wifi', categorySlug: 'internet-access-resources' },
+  { name: 'LGBTQ Resources', icon: 'community', categorySlug: 'lgbtq-resources' },
+];
 
-const VerticalSpacing = ({ spacing }) => (
-  <div style={{ height: spacing }} />
-);
-
-VerticalSpacing.propTypes = {
-  spacing: PropTypes.string.isRequired,
-};
-
+const generalResources = [{
+  name: 'Family Homelessness',
+  icon: 'family',
+  link: 'https://sheltertech.typeform.com/to/GFEzl2',
+  isTypeform: true,
+}, {
+  name: 'Youth Homelessness',
+  icon: 'care',
+  link: 'https://sheltertech.typeform.com/to/mXv584',
+  isTypeform: true,
+}, {
+  name: 'Adult Homelessness',
+  icon: 'shelter',
+  link: 'https://sheltertech.typeform.com/to/KXi3Pp',
+  isTypeform: true,
+}];
 
 class HomePage extends React.Component {
   state = {
@@ -58,13 +76,13 @@ class HomePage extends React.Component {
           title="COVID-19 Resource Guides"
           description="Get guided help for common COVID-19 related issues people are facing in San Francisco."
         >
-          <Guidelist />
+          <ResourceList resources={covidResources} />
         </Section>
         <Section
           title="Get step-by-step help"
           description="Get guided help with many of the most common issues peeople are facing in San Francisco."
         >
-          <Guidelist />
+          <ResourceList resources={generalResources} />
         </Section>
         <Section
           title="Browse Directory"
