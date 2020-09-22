@@ -52,8 +52,6 @@ const SearchResult = ({ hit, index }) => {
   };
 
   const phoneNumber = _get(hit, 'phones[0].number');
-  const latitude = _get(hit, 'addresses[0].latitude');
-  const longitude = _get(hit, 'addresses[0].longitude');
   const url = hit.url || hit.website;
   const serviceId = hit.service_id;
 
@@ -74,15 +72,6 @@ const SearchResult = ({ hit, index }) => {
             <div className={styles.sideLink}>
               <img src={images.icon('phone-blue')} alt="phone" className={styles.sideLinkIcon} />
               <a href={`tel:${phoneNumber}`} className={styles.sideLinkText}>{`Call ${phoneNumber}`}</a>
-            </div>
-          )
-        }
-        {
-          (latitude && longitude)
-          && (
-            <div className={styles.sideLink}>
-              <img src={images.icon('directions-blue')} alt="directions" className={styles.sideLinkIcon} />
-              <a href={`http://google.com/maps/dir/?api=1&destination=${latitude},${longitude}`} className={styles.sideLinkText}>Get directions</a>
             </div>
           )
         }
