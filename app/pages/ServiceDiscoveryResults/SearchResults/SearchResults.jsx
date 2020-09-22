@@ -54,6 +54,7 @@ const SearchResult = ({ hit, index }) => {
   const phoneNumber = _get(hit, 'phones[0].number');
   const url = hit.url || hit.website;
   const serviceId = hit.service_id;
+  const resourceId = hit.resource_id;
 
   return (
     <div className={styles.searchResult}>
@@ -63,7 +64,9 @@ const SearchResult = ({ hit, index }) => {
         </div>
         <div className={styles.address}>{renderAddressMetadata(hit)}</div>
         <ReactMarkdown className={`rendered-markdown ${styles.description}`} source={hit.long_description} />
-        <div className={styles.serviceOf}>{hit.service_of}</div>
+        <div className={styles.serviceOf}>
+          <Link to={`/organizations/${resourceId}`}>{hit.service_of}</Link>
+        </div>
       </div>
       <div className={styles.sideLinks}>
         {
