@@ -14,7 +14,8 @@ const covidResources = [
   { name: 'Food', icon: 'food', categorySlug: 'food-resources' },
   { name: 'Showers and Restrooms', icon: 'shower', categorySlug: 'hygiene-resources' },
   { name: 'Access Points and Shelters', icon: 'bed', link: '/covid/shelteraccess' },
-  { name: 'Financial and Job Assistance', icon: 'employment', categorySlug: 'financial-and-job-assistance-resources' },
+  { name: 'Financial', icon: 'wallet', categorySlug: 'financial-resources' },
+  { name: 'Job Assistance', icon: 'employment', categorySlug: 'job-assistance-resources' },
   { name: 'Rent and Eviction Help', icon: 'eviction-prevention', categorySlug: 'rental-assistance-resources' },
   { name: 'COVID-19 Testing & Other Health Services', icon: 'hospital', categorySlug: 'medical-services-resources' },
   { name: 'Domestic Violence', icon: 'warning', categorySlug: 'domestic-violence-resources' },
@@ -36,6 +37,18 @@ const generalResources = [{
   name: 'Adult Homelessness',
   icon: 'shelter',
   link: 'https://sheltertech.typeform.com/to/KXi3Pp',
+  isTypeform: true,
+},
+{
+  name: 'Eviction Prevention',
+  icon: 'eviction-prevention',
+  link: 'https://sheltertech.typeform.com/to/UpboWbGi',
+  isTypeform: true,
+},
+{
+  name: 'Affordable Housing',
+  icon: 'housing',
+  link: 'https://sheltertech.typeform.com/to/X16WX6wE',
   isTypeform: true,
 }];
 
@@ -70,11 +83,11 @@ class HomePage extends React.Component {
       <div className="find-page">
         <HomePageHero
           title="Welcome to the SF Service Guide"
-          description="Find food, housing, health, and coronavirus resources in San Francisco."
+          description="Get guided help with many of the most common issues people are facing in San Francisco."
         />
         <Section
-          title="COVID-19 Resource Guides"
-          description="Get guided help for common COVID-19 related issues people are facing in San Francisco."
+          title="Resource Guides"
+          description="Get guided help for common issues people are facing in San Francisco."
         >
           <ResourceList resources={covidResources} />
         </Section>
