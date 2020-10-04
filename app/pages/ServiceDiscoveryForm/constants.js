@@ -43,8 +43,15 @@ export const CATEGORIES = [
   {
     algoliaCategoryName: 'Covid-finance',
     id: '1000003',
-    name: 'Financial and Job Assistance',
-    slug: 'financial-and-job-assistance-resources',
+    name: 'Financial',
+    slug: 'financial-resources',
+    steps: [STEPS.SUBCATEGORIES, STEPS.RESULTS],
+  },
+  {
+    algoliaCategoryName: 'Covid-jobs',
+    id: '1000009',
+    name: 'Job Assistance',
+    slug: 'job-assistance-resources',
     steps: [STEPS.SUBCATEGORIES, STEPS.RESULTS],
   },
   {
