@@ -37,6 +37,18 @@ const generalResources = [{
   icon: 'shelter',
   link: 'https://sheltertech.typeform.com/to/KXi3Pp',
   isTypeform: true,
+},
+{
+  name: 'Eviction Prevention',
+  icon: 'eviction-prevention',
+  link: 'https://sheltertech.typeform.com/to/UpboWbGi',
+  isTypeform: true,
+},
+{
+  name: 'Affordable Housing',
+  icon: 'housing',
+  link: 'https://sheltertech.typeform.com/to/X16WX6wE',
+  isTypeform: true,
 }];
 
 class HomePage extends React.Component {
