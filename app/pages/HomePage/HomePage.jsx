@@ -12,15 +12,14 @@ import ResourceList from './components/ResourceList/ResourceList';
 
 const covidResources = [
   { name: 'Food', icon: 'food', categorySlug: 'food-resources' },
-  { name: 'Showers and Restrooms', icon: 'shower', categorySlug: 'hygiene-resources' },
-  { name: 'Access Points and Shelters', icon: 'bed', link: '/covid/shelteraccess' },
-  { name: 'Financial', icon: 'wallet', categorySlug: 'financial-resources' },
-  { name: 'Job Assistance', icon: 'employment', categorySlug: 'job-assistance-resources' },
-  { name: 'Rent and Eviction Help', icon: 'eviction-prevention', categorySlug: 'rental-assistance-resources' },
-  { name: 'COVID-19 Testing & Other Health Services', icon: 'hospital', categorySlug: 'medical-services-resources' },
+  { name: 'Shelter', icon: 'bed', link: '/covid/shelteraccess' },
+  { name: 'Hygiene', icon: 'shower', categorySlug: 'hygiene-resources' },
+  { name: 'Health', icon: 'hospital', categorySlug: 'medical-services-resources' },
+  { name: 'Financial Assistance', icon: 'wallet', categorySlug: 'financial-resources' },
+  { name: 'Jobs', icon: 'employment', categorySlug: 'job-assistance-resources' },
+  { name: 'Housing', icon: 'eviction-prevention', categorySlug: 'rental-assistance-resources' },
   { name: 'Domestic Violence', icon: 'warning', categorySlug: 'domestic-violence-resources' },
-  { name: 'Internet Access', icon: 'wifi', categorySlug: 'internet-access-resources' },
-  { name: 'LGBTQ Resources', icon: 'community', categorySlug: 'lgbtq-resources' },
+  { name: 'LGBTQ+', icon: 'community', categorySlug: 'lgbtq-resources' },
 ];
 
 const generalResources = [{
@@ -87,13 +86,12 @@ class HomePage extends React.Component {
         />
         <Section
           title="Resource Guides"
-          description="Get guided help for common issues people are facing in San Francisco."
         >
           <ResourceList resources={covidResources} />
         </Section>
         <Section
           title="Get step-by-step help"
-          description="Get guided help with many of the most common issues peeople are facing in San Francisco."
+          description="Get guided help with many of the most common issues people are facing in San Francisco."
         >
           <ResourceList resources={generalResources} />
         </Section>
