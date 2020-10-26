@@ -1,0 +1,55 @@
+.feedback-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  .feedback-tag {
+    flex: 1 0 auto;
+    border: 2px solid #276ce5;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 10px;
+    padding: 8px 24px 8px 24px;
+    color: #276ce5;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .selected {
+    color: white;
+    background: #276ce5;
+  }
+}
+
+.feedback-review {
+  margin: 20px;
+  textarea {
+    resize: none !important;
+    background: #fbf8f8;
+    border: 2px solid #276ce5;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-size: 16px;
+    letter-spacing: 0.402722px;
+    height: 180px;
+    &::-webkit-scrollbar {
+      width: 0%;
+    }
+  }
+}
+.feedback-submit-header {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  margin-top: 3.5em;
+}
+.feedback-submit-subheader {
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  margin: 15px auto;
+  width: 80%;
+  margin-bottom: 3.5em;
+}

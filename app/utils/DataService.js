@@ -122,3 +122,7 @@ export const getService = id => get(`/api/services/${id}`)
       }
     );
   });
+
+export const addFeedback = (url, body) => (
+  post(url, body).then(res => res.json())
+);
