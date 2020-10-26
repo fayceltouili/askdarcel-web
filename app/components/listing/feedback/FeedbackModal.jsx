@@ -7,6 +7,9 @@ import { images } from '../../../assets';
 import './FeedbackModal.scss';
 import { addFeedback } from '../../../utils/DataService';
 
+const getUrl = ([path, id]) => (
+  `api/${path === 'organizations' ? 'resources' : path}/${id}/feedbacks`
+);
 
 const FeedbackModal = ({ closeModal }) => {
   const [upvote, setUpvote] = useState(false);
@@ -61,17 +64,20 @@ const FeedbackModal = ({ closeModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const url = window.location.pathname;
+    const path = window.location.pathname.split('/').slice(1);
     const rating = upvote ? 'true' : 'false';
     const tags = tagOptions.reduce((res, { tag, selected }) => (
       selected ? res.concat(tag) : res
     ), []);
+
     const feedback = {
       rating,
       tags,
       review,
     };
-    addFeedback(`/api${url}/feedbacks`, feedback)
+    const url = getUrl(path);
+
+    addFeedback(url, feedback)
       .then(({ msg }) => {
         if (msg === 'Success!') setSubmit(true);
       })
