@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+
 import {
   FeedbackTags, Review, SubmitMessage, tagList,
 } from './FeedbackSteps';
@@ -8,7 +9,7 @@ import './FeedbackModal.scss';
 import { addFeedback } from '../../../utils/DataService';
 
 const getUrl = ([path, id]) => (
-  `api/${path === 'organizations' ? 'resources' : path}/${id}/feedbacks`
+  `/api/${path === 'organizations' ? 'resources' : path}/${id}/feedbacks`
 );
 
 const FeedbackModal = ({ closeModal }) => {
@@ -64,7 +65,7 @@ const FeedbackModal = ({ closeModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const path = window.location.pathname.split('/').slice(1);
+    const path = window.location.pathname.slice(1).split('/');
     const rating = upvote ? 'true' : 'false';
     const tags = tagOptions.reduce((res, { tag, selected }) => (
       selected ? res.concat(tag) : res
