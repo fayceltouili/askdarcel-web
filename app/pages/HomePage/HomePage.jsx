@@ -5,7 +5,6 @@ import qs from 'qs';
 
 import Footer from 'components/ui/Footer/Footer';
 import Partners from 'components/ui/Partners/Partners';
-import HomePageHero from './components/HomePageHero';
 import SearchBar from './components/SearchBar';
 import Section from './components/Section';
 import ResourceList from './components/ResourceList/ResourceList';
@@ -80,12 +79,8 @@ class HomePage extends React.Component {
     const { resourceCount, searchValue } = this.state;
     return (
       <div className="find-page">
-        <HomePageHero
-          title="Welcome to the SF Service Guide"
-          description="Get guided help with many of the most common issues people are facing in San Francisco."
-        />
         <Section
-          title="Resource Guides"
+          title="Find essential services in San Francisco"
         >
           <ResourceList resources={covidResources} />
         </Section>
