@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Banner.scss';
+/* eslint-disable max-len */
 
 export default function Banner() {
   return (
